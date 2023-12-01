@@ -43,10 +43,10 @@ uploaded_file = st.file_uploader("Choose your PDF file", type=["pdf"])
 
 if uploaded_file is not None:
 
-    with open('upload/' + uploaded_file.name, "wb") as f:
+    with open(uploaded_file.name, "wb") as f:
         f.write(uploaded_file.getvalue())
-    num_pages = fitz.open('upload/' + uploaded_file.name).page_count
-    images = convert_pdf_to_images('upload/' + uploaded_file.name, num_pages)
+    num_pages = fitz.open(uploaded_file.name).page_count
+    images = convert_pdf_to_images(uploaded_file.name, num_pages)
 
     opt_concat_or_not = st.checkbox("Do you want to concatenate images ?")
     st.write('Number all of pages:', num_pages)
@@ -76,4 +76,4 @@ if uploaded_file is not None:
             command, command2 = 'rm -r images', 'rm *.zip'
             os.system(command)
             os.system(command2)
-        os.remove('upload/' + uploaded_file.name)
+        os.remove(uploaded_file.name)
