@@ -1,0 +1,7 @@
+
+Pillow==9.5.0
+PyMuPDF==1.23.7
+PyMuPDFb==1.23.7
+
+streamlit==1.25.0
+
